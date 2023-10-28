@@ -9,15 +9,18 @@ class MiniMaxSum
         $max = 0;
         $sumLower = 0;
         $sumMax = 0;
-        $isSameContentArray = count(array_unique( $arr )) === 1;
+        $isSameContentArray = count( array_unique( $arr ) ) === 1;
         
         if ($isSameContentArray) {
             
             for ($i = 0; $i < count($arr); $i++) {
-                if ($i > 1) {
-                    $sumMax += $arr[$i];
+                if ($i >= 1) {
+                    $sumMax += $arr[$i];                    
+                }    
+                
+                if ($i < count($arr) - 1 ) {
                     $sumLower += $arr[$i];
-                };                
+                }
             }
 
         } else {
@@ -42,4 +45,6 @@ class MiniMaxSum
 }
 
 // MiniMaxSum::miniMaxSum([1, 3, 5, 7, 9]);
+
+
 print MiniMaxSum::miniMaxSum([3, 3, 3, 3, 3]);

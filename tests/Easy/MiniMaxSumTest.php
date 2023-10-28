@@ -30,7 +30,7 @@ class MiniMaxSumTest extends TestCase
     public function testWithSameNumbers() 
     {
         $result = MiniMaxSum::miniMaxSum([3, 3, 3, 3, 3]);
-        $expected = 9 . ' ' . 9;
+        $expected = 12 . ' ' . 12;
         $this->assertEquals($expected, $result);
     }
 }
