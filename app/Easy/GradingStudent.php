@@ -16,13 +16,31 @@ class GradingStudent
 
     public static function gradingStudent( array $grades )
     {
-        foreach ( $grades as $grade ) {
+        $maxValue = 0;
+        $nextFiveMultipleNumber = [];
+        $counter = 0;
+        $diff = 0;
+
+        foreach ( $grades as $grade ) {            
+
+            if ( $grade >= 40 ) {
+
+                if ( $grade >= $maxValue ) $maxValue = $grade;       
+
+                for ( $i = 0; $i < $maxValue; $i++ ) {
+                    
+                    if ( $i * 5 > $grade ) {
+                        $nextFiveMultipleNumber[] = $i * 5 ;
+                        break;                        
+                    }
+                }
+                
+            }
             
-            $nextFiveMultiple = 0;
-            $diff = 0;
-
-
         }
+        print_r($nextFiveMultipleNumber);
+
+    
     }
 }
 
