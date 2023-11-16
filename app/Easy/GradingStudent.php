@@ -18,12 +18,13 @@ class GradingStudent
     {
         $maxValue = 0;
         $nextFiveMultipleNumber = [];
-        $counter = 0;
-        $diff = 0;
+        $roundedGrades = [];
+        $notRoundedGrades = [];
+        $diff = [];
 
         foreach ( $grades as $grade ) {            
 
-            if ( $grade >= 40 ) {
+            if ( $grade >= 38 ) {
 
                 if ( $grade >= $maxValue ) $maxValue = $grade;       
 
@@ -38,10 +39,24 @@ class GradingStudent
             }
             
         }
-        print_r($nextFiveMultipleNumber);
+        print_r( $nextFiveMultipleNumber );
 
+        // if ( !empty( $nextFiveMultipleNumber ) ) {
     
+        //     for ( $i = 0; $i < count( $nextFiveMultipleNumber ); $i++ ) {
+        //         $diff[] = $nextFiveMultipleNumber[$i] - $grades[$i];
+
+        //         if ( $diff[$i] < 3 ) {
+        //             $roundedGrades[] = $nextFiveMultipleNumber[$i];
+        //         } else {
+        //             $roundedGrades[] = $grades[$i];
+        //         }
+        //     }
+        // }
+
+
+        // print_r( $roundedGrades );    
     }
 }
 
-GradingStudent::gradingStudent([73, 67, 40, 33]);
+GradingStudent::gradingStudent([73, 67, 38, 33]); 
