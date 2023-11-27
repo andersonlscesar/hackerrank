@@ -18,44 +18,33 @@ class GradingStudent
     {
         $maxValue = 0;
         $nextFiveMultipleNumber = [];
-        $roundedGrades = [];
-        $notRoundedGrades = [];
-        $diff = [];
+        $newGrades = [];
+        $diff = 0;
 
-        foreach ( $grades as $grade ) {            
+        foreach ( $grades as $grade ) {         
 
-            if ( $grade >= 38 ) {
+            if ( $grade >= $maxValue ) $maxValue = $grade;       
 
-                if ( $grade >= $maxValue ) $maxValue = $grade;       
-
-                for ( $i = 0; $i < $maxValue; $i++ ) {
-                    
-                    if ( $i * 5 > $grade ) {
-                        $nextFiveMultipleNumber[] = $i * 5 ;
-                        break;                        
-                    }
-                }
+            for ( $i = 0; $i < $maxValue; $i++ ) {
                 
-            }
-            
+                if ( $i * 5 > $grade ) {
+                    $nextFiveMultipleNumber[] = $i * 5 ;
+                    break;                        
+                }
+            }            
         }
-        print_r( $nextFiveMultipleNumber );
 
-        // if ( !empty( $nextFiveMultipleNumber ) ) {
-    
-        //     for ( $i = 0; $i < count( $nextFiveMultipleNumber ); $i++ ) {
-        //         $diff[] = $nextFiveMultipleNumber[$i] - $grades[$i];
+        for ( $i = 0; $i < count( $grades ); $i++ ) {
+            $diff = $nextFiveMultipleNumber[$i] - $grades[$i];
 
-        //         if ( $diff[$i] < 3 ) {
-        //             $roundedGrades[] = $nextFiveMultipleNumber[$i];
-        //         } else {
-        //             $roundedGrades[] = $grades[$i];
-        //         }
-        //     }
-        // }
+            if ( $grades[$i] >= 38 && $diff < 3 ) {
+                $newGrades[] = $nextFiveMultipleNumber[$i];
+            } else {
+                $newGrades[] = $grades[$i];
+            }            
+        }
 
-
-        // print_r( $roundedGrades );    
+        return $newGrades;        
     }
 }
 
